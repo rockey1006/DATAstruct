@@ -24,17 +24,20 @@ public class Node {
 			}
 			return length;
 		}
-		public void addNodeEnd(Node head,Node x) {/*在单链表最后插入*/
+		public void addNodeEnd(Node head,Node x) {/*在单链表最后插入x*/
 			Node temp=head;/*pointer*/
 			while(temp.next!=null) {
 				temp=temp.next;/*find the last node*/
 			}
 			temp.next=x;/*change the last node's pointer from null to x*/
+			x.next=null;
+			head.print(head);
 		}
 		public void addNodeHead(Node head,Node x) {/*在单链表最前插入x*/
-			
-			x.next=head;/*set the new node's next to head*/
-				
+			Node temp=head;/*指针，用于暂时改head地址*/
+			x.next=temp;/**/
+			head=x;/*set the new node's next to head*/
+			head.print(head);	
 		}
 		public void addNodeByIndex(int index,Node head,Node x) {
 			/*在单链表中间指定位置后面插入x*/
@@ -51,18 +54,23 @@ public class Node {
 			}
 		public void deleteHead(Node head) {/*删除单链表头结点*/
 			
-			Node temp=head;
-	    	head=head.next;
-	    	head.next=null;
-			
+			Node temp=head;/*指针*/
+	    	head=temp.next;/*删除单链表头结点从栈内存指向推内存的下一个结点*/
+	    	temp.next=null;	/*删除指针指的头节点*/
+            head.print(head);
+            
 		}
 		public void deleteEnd(Node head,Node end) {
 			/*删除单链表尾结点*/
 		    Node temp=head;
-		    while(temp.next!=end) {
-		    	temp=temp.next;
+		    Node tail=end;/*两个指针，一个指头一个指尾*/
+		    while(temp.next!=tail) {
+		    	temp=temp.next;/*找到尾节点的前一个结点*/
 		    }
-		    temp.next=null;
+		    temp.next=null;   /*尾节点的前一个结点的next设置为null*/      
+		   
+            head.print(head);
+
 		    
 		    }
 		public void deleteIndexNode(int index,Node head) {
@@ -75,18 +83,27 @@ public class Node {
 				}
 				count++;
 				temp=temp.next;
+				head.print(head);
 			}
 			
 		}
 		public void adddoubleHead(Node head,Node y) {
-			y.next=head;/*在双链表前面增加结点*/
+			Node temp=head;
+			y.next=temp;/*在双链表前面增加结点y*/
 			y.pre=null;
-			head.pre=y.next;
+			temp.pre=y.next;
+			head=y;/*更新头节点*/
+			head.print(head);
 		}
-		public void adddoubleEnd(Node end,Node y) {
-			end.next=y;/*在双链表后面增加结点*/
-			y.pre=end;
+		public void adddoubleEnd(Node head,Node y) {
+			Node temp=head;
+			while(temp.next!=null) {
+				temp=temp.next;
+			}
+			temp.next=y;/*在双链表后面增加结点*/
+			y.pre=temp;
 			y.next=null;
+			head.print(head);
 		}
 		public void adddoubleByindex(int index,Node head,Node y) {
 			int count=1;
@@ -104,10 +121,35 @@ public class Node {
 			}
 		}
 	    public void DeleteDoubleHead(Node head) {
-	    	Node temp=head;
-	    	head.next.pre=null;
+	    	Node temp=head;/*删除双链表头结点*/
+	    	temp.next.pre=null;
+	    	head=temp.next;
 	    	temp.next=null;
-	    	head=head.next;
+	    	head.print(head);
+	    }
+	    public void DeleteDoubleEnd(Node head,Node end) {
+	    	Node temp=head;
+	    	Node tail=end;
+	    	while(temp.next!=tail) {
+	    		temp=temp.next;
+	    	}
+	    	temp.next=null;
+	    	tail.pre=null;
+	    	end=temp;
+	    	head.print(head);
+	    }
+	    public void DeleteDoubleByIndex(int index,Node head) {
+	    	int count=1;
+	    	Node temp=head;
+	    	while(temp.next!=null) {
+	    		if(index==count) {
+	    			temp.next=temp.next.next;
+	    			temp.next.pre=temp;
+	    		}
+	    		count++;
+	    		temp=temp.next;
+	    	}
+	    	head.print(head);
 	    }
 	    
 	    
@@ -126,11 +168,7 @@ public static void main(String[] args) {
      c.next=null;
  
      System.out.println("The length of the Node is "+a.length(a));
-   
-     
-     a.adddoubleByindex(1, a, y);
-     a.DeleteDoubleHead(a);
-     a.print(a);
+a.DeleteDoubleByIndex(1, a);
 }
 }
 
