@@ -128,7 +128,7 @@ public class Node {
 	    	head.print(head);
 	    }
 	    public void DeleteDoubleEnd(Node head,Node end) {
-	    	Node temp=head;
+	    	Node temp=head;/*删除双链表尾结点*/
 	    	Node tail=end;
 	    	while(temp.next!=tail) {
 	    		temp=temp.next;
@@ -139,12 +139,12 @@ public class Node {
 	    	head.print(head);
 	    }
 	    public void DeleteDoubleByIndex(int index,Node head) {
-	    	int count=1;
+	    	int count=1;/*删除双链表中间标号后的结点*/
 	    	Node temp=head;
 	    	while(temp.next!=null) {
 	    		if(index==count) {
 	    			temp.next=temp.next.next;
-	    			temp.next.pre=temp;
+	    			temp.next.next.pre=temp;
 	    		}
 	    		count++;
 	    		temp=temp.next;
@@ -152,6 +152,88 @@ public class Node {
 	    	head.print(head);
 	    }
 	    
+	    public int LenthCir(Node head) {/*数循环链表的结点数*/
+	    	int length=1;
+	    	Node temp=head;
+	    	while(temp.next!=head) {
+	    		temp=temp.next;
+	    		length++;
+	    	}
+	    	
+	    	return length;
+	    }
+	    public void printCir(Node head) {/*打印循环链表的结点*/
+	    	Node temp=head;
+	    	while(temp.next!=head) {
+	    		System.out.println(temp.data);
+	    		temp=temp.next;
+	    	}
+	    	System.out.println(temp.data);
+	    }
+	    public void addHeadCir(Node head,Node end,Node x) {
+	    	Node temp=head;/*在循环链表的前面增加结点*/
+	    	Node tail=end;
+	    	tail.next=x;
+	    	x.next=temp;
+	    	head=x;
+	    	head.printCir(head);  	
+	    	
+	    }
+	    public void addEndCir(Node head,Node end,Node x) {
+	    	Node temp=head;/*在循环链表的最后增加结点*/
+	    	Node tail=end;
+	    	tail.next=x;
+	    	x.next=temp;
+	    	head.printCir(head);
+	    }
+	    
+	    public void addByIndexCir(int index,Node head,Node x) {
+	    	Node temp=head;
+	    	int count=1;
+	    	while(temp.next!=head) {
+	    	    if(index==count) {
+	    	    	x.next=temp.next;/*在循环链表的中间增加结点，记住一定要从后往前改变指针*/
+	    	    	temp.next=x;
+	    	    	
+	    	    }
+	    	    temp=temp.next;
+	    	    count++;
+	    	   	}
+	    	  head.printCir(head);
+	    }
+	    
+	    public void deleteHeadCir(Node head,Node end) {
+	    	Node temp=head;
+	    	Node tail=end;
+	    	tail.next=temp.next;
+	    	head=temp.next;
+	    	temp.next=null;
+	    	head.printCir(head);
+	    	
+	    }
+	    public void deleteEndCir(Node head,Node end) {
+	    	Node temp=head;
+	    	Node tail=end;
+	    	
+	    	while(temp.next!=tail) {
+	    		temp=temp.next;
+	    	}
+	    	temp.next=head;
+	    	head.printCir(head);
+	    }
+	    public void deleteByIndex(int index,Node head) {
+	    	Node temp=head;
+	    	int count=1;
+	    	while(temp.next!=head) {
+	    		if (index==count) {
+	    			temp.next=temp.next.next;
+	    		}
+	    		count++;
+	    		temp=temp.next;
+	    	}
+	    	head.printCir(head);
+
+	    }
 	    
 public static void main(String[] args) {
 	
@@ -165,10 +247,15 @@ public static void main(String[] args) {
      c.pre=b;
      a.next=b;
      b.next=c;
-     c.next=null;
+     c.next=a;
  
-     System.out.println("The length of the Node is "+a.length(a));
-a.DeleteDoubleByIndex(1, a);
+     System.out.println("The length of the Node is "+ a.LenthCir(a));
+    //a.printCir(a);//
+ /*    a.addHeadCir(a, c, x);*/
+     /*a.addEndCir(a, c, x);*/
+   //  a.addByIndexCir(1, a, x);//
+    // a.deleteEndCir(a, c);//
+     a.deleteByIndex(1, a);
 }
 }
 
