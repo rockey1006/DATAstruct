@@ -203,7 +203,7 @@ public class Node {
 	    }
 	    
 	    public void deleteHeadCir(Node head,Node end) {
-	    	Node temp=head;
+	    	Node temp=head;/*删除循环链表的头结点*/
 	    	Node tail=end;
 	    	tail.next=temp.next;
 	    	head=temp.next;
@@ -212,7 +212,7 @@ public class Node {
 	    	
 	    }
 	    public void deleteEndCir(Node head,Node end) {
-	    	Node temp=head;
+	    	Node temp=head;/*删除循环链表的尾结点*/
 	    	Node tail=end;
 	    	
 	    	while(temp.next!=tail) {
@@ -222,7 +222,7 @@ public class Node {
 	    	head.printCir(head);
 	    }
 	    public void deleteByIndex(int index,Node head) {
-	    	Node temp=head;
+	    	Node temp=head;/*删除循环链表中间的结点*/
 	    	int count=1;
 	    	while(temp.next!=head) {
 	    		if (index==count) {
