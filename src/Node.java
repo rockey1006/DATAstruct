@@ -39,6 +39,8 @@ public class Node {
 			head=x;/*set the new node's next to head*/
 			head.print(head);	
 		}
+		
+			  
 		public void addNodeByIndex(int index,Node head,Node x) {
 			/*在单链表中间指定位置后面插入x*/
 			int count=1;
@@ -237,25 +239,26 @@ public class Node {
 	    
 public static void main(String[] args) {
 	
-     Node a=new Node(1);
+     /*Node a=new Node(1);
      Node b=new Node(2);
      Node c=new Node(3);
      Node x=new Node(4);
      Node y=new Node(5);
      a.pre=null;
      b.pre=a;
-     c.pre=b;
-     a.next=b;
-     b.next=c;
-     c.next=a;
+     //c.pre=b;
+     a.next=b;//
+     //b.next=c;
+     //c.next=a;*/
  
-     System.out.println("The length of the Node is "+ a.LenthCir(a));
+     //System.out.println("The length of the Node is "+ a.LenthCir(a));
     //a.printCir(a);//
  /*    a.addHeadCir(a, c, x);*/
      /*a.addEndCir(a, c, x);*/
    //  a.addByIndexCir(1, a, x);//
     // a.deleteEndCir(a, c);//
-     a.deleteByIndex(1, a);
+    // a.deleteByIndex(1, a);
+	stack a=new stack(1);
 }
 }
 
