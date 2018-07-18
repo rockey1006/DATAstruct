@@ -23,21 +23,54 @@ public boolean isleaf() {//判断是否为叶结点
 			return false;
 	}
 }
-public BinaryTree insert(int data,BinaryTree node) {
+public BinaryTree insert(int data,BinaryTree node) {//1.要插入的数值。2.根结点
 	if(node==null) {
 		return new BinaryTree(data,null,null);//递归终止的条件
 	}
 	else if(data<node.data) {//如果要插入的值小于根节点的值
-    	node.left=insert(data,node.left);////就以根节点的
+    	node.left=insert(data,node.left);////1，以左子结点为头，
+    	//2.然后要插入的结点的值和根节点的左子结点比大小
     } 
     else if(data>node.data) {
-    	node.right=insert(data,node.right);
+    	node.right=insert(data,node.right);//同上
     }else {
     ;} 
-    return node;
+    return node;//重要！返回的为当前根结点的地址值
 	
 	}
-
+public BinaryTree preorder(BinaryTree node) {//前序遍历
+	if(node==null) {
+		return node;
+	}
+	else {
+	System.out.println(node.data);//打印当前头结点
+	node.left=preorder(node.left);//以左子结点为头递归
+	node.right=preorder(node.right);//同上
+	return node;//重要！返回的为当前根结点的地址值
+}
+}
+public BinaryTree inorder(BinaryTree node) {
+	if(node==null) {
+		return node;
+	}
+	else {
+	node.left=inorder(node.left);//以左子结点为头递归
+	System.out.println(node.data);//打印当前头结点
+	node.right=inorder(node.right);//同上
+	return node;//重要！返回的为当前根结点的地址值
+}
+}
+public BinaryTree postorder(BinaryTree node) {
+	if (node==null) {
+		return node;
+	}
+	else {
+		node.left=postorder(node.left);
+		node.right=postorder(node.right);
+		System.out.println(node.data);
+		return node;
+	}
+}
 	public static void main(String[] args) {
 		BinaryTree a=new BinaryTree(7);
 		BinaryTree b=new BinaryTree(2);
@@ -52,8 +85,11 @@ public BinaryTree insert(int data,BinaryTree node) {
         c.left=f;
 		//System.out.println(d.isleaf());
 
-        a.insert(12,a);
-		System.out.println(c.right.data);
+       // a.insert(12,a);
+		//System.out.println(c.right.data);
+//a.preorder(a);
+        //a.inorder(a);
+        a.postorder(a);
 
 
 
