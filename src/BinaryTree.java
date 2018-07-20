@@ -114,7 +114,8 @@ public BinaryTree delete(BinaryTree node,int data) {
 		else if(node.left!=null&&node.right!=null) {
 		//System.out.println(node.right.left.data);
 		//System.out.println(findMin(node.right).data);
-		node=findMin(node.right);//没搞懂
+			
+		node.data=findMin(node.right).data;//
 		
 		//System.out.println(node.data);
 		node.right=delete(node.right,node.data);
