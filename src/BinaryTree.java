@@ -71,6 +71,63 @@ public BinaryTree postorder(BinaryTree node) {
 		return node;
 	}
 }
+public BinaryTree findMin(BinaryTree node) {//寻找树的最小值
+	if(node==null) {//终止条件，当最左边的树的左子树为空
+
+		return null;
+	}
+	else if(node.left==null) {
+		//System.out.println(node.data);
+
+		return node;
+		
+	}
+	else {
+		node.left=findMin(node.left);
+		return node;
+	}
+}
+
+	
+
+public BinaryTree findMax(BinaryTree node) {//寻找树的最大值
+	if(node.right==null) {//终止条件，当最右边的树的右子树为空
+		System.out.println(node.data);
+		return node;
+	}
+	else {
+		node.right=findMax(node.right);
+		return node;
+	}
+}
+public BinaryTree delete(BinaryTree node,int data) {
+	if(node==null) {
+		
+	return node;
+}
+	
+	else if(data<node.data) {
+		node.left=delete(node.left,data);}
+		else if(data>node.data) {
+	node.right=delete(node.right,data);
+		}
+		else if(node.left!=null&&node.right!=null) {
+		//System.out.println(node.right.left.data);
+		//System.out.println(findMin(node.right).data);
+		node=findMin(node.right);//没搞懂
+		
+		//System.out.println(node.data);
+		node.right=delete(node.right,node.data);
+	}
+				else if(node.left!=null){
+			node=node.left;
+		}
+		else if(node.right!=null){
+			node=node.right;		
+		}
+		return node;
+	}
+
 	public static void main(String[] args) {
 		BinaryTree a=new BinaryTree(7);
 		BinaryTree b=new BinaryTree(2);
@@ -78,22 +135,33 @@ public BinaryTree postorder(BinaryTree node) {
 		BinaryTree d=new BinaryTree(1);
 		BinaryTree e=new BinaryTree(5);
 		BinaryTree f=new BinaryTree(8);
+		BinaryTree g=new BinaryTree(3);
+		BinaryTree h=new BinaryTree(4);
+
         a.left=b;
         a.right=c;
         b.left=d;
         b.right=e;
         c.left=f;
+        e.left=g;
+        g.right=h;
 		//System.out.println(d.isleaf());
 
        // a.insert(12,a);
 		//System.out.println(c.right.data);
 //a.preorder(a);
         //a.inorder(a);
-        a.postorder(a);
-
-
-
-
+        //a.postorder(a);
+//a.findMin(e);
+//a.findMax(a);
+//a.delete(a, 5);
+//a.postorder(a);
+//System.out.println(b.right.data);
+a.delete(a,2);
+a.postorder(a);
+//a.inorder(a);
+//System.out.println(e.left.data);
+//System.out.println(b.right.data);
 
 	}
 	
