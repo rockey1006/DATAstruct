@@ -100,11 +100,11 @@ public BinaryTree findMax(BinaryTree node) {//寻找树的最大值
 		return node;
 	}
 }
-public BinaryTree delete(BinaryTree node,int data) {
+public BinaryTree delete(BinaryTree node,int data) {//递归的方法实现删除
 	if(node==null) {
 		
 	return node;
-}
+}//
 	
 	else if(data<node.data) {
 		node.left=delete(node.left,data);}
@@ -115,15 +115,14 @@ public BinaryTree delete(BinaryTree node,int data) {
 		//System.out.println(node.right.left.data);
 		//System.out.println(findMin(node.right).data);
 			
-		node.data=findMin(node.right).data;//
-		
+		node.data=findMin(node.right).data;//没办法实现，找到该节点的右子树中的最左孩子
 		//System.out.println(node.data);
-		node.right=delete(node.right,node.data);
+		node.right=delete(node.right,node.data);//把它的值和要删除的节点的值进行交换，然后删除这个节点即相当于把我们想删除的节点删除了
 	}
 				else if(node.left!=null){
 			node=node.left;
 		}
-		else if(node.right!=null){
+		else if(node.right!=null){//如果要删除的节点只有右孩子，那么就让该节点的父亲结点指向该节点的右孩子，然后删除该节点，返回true；
 			node=node.right;		
 		}
 		return node;
