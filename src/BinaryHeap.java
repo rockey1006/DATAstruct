@@ -58,17 +58,56 @@ public void add(int data) {
         	 
       	   System.out.println(array[i]);}
          }
+    public int pop() {
+    	/**
+         * 将根节点从堆中移出
+         * 将最后一个元素放到根节点，然后比较孩子节点：
+         * ①如果存在孩子节点比新的节点小，将新节点和最小的孩子节点替换位置
+         * ②重复步骤①直到到达叶子节点，或者孩子节点都比最后一个元素要大
+         * @return
+         */
+    	int i=0;
+    	int e=array[0];//要删除的顶点
+    	int x=array[size-1];//最后一个数
+    	while(hasLeftChild(i)) {{//如果有左节点，就是还未达到叶子节点,完全二叉树性质
+    		
+    		int child=leftChild(i);//声明所以要加int,子节点就为左结点
+    	
+    	if(hasRightChild(i)&&array[child]>array[rightChild(i)]) {
+    		child=rightChild(i);//如果有右孩子节点且小于左孩子节点，子节点就为右结点
+        
+    	}
+    	if(x<array[child]) {//开始比较新的头节点的值和最小的子节点的值，如果小于子节点就结束循环
+    		break;
+    		 	}
+    	else {
+    		array[i]=array[child];//否则换位置
+    		i=child;//新的父节点更新为当前结点最小的子节点
+    		
+    	}
+    	array[i]=x;//把最后一个数和当前的结点交换位置
+    	array[size-1]=0;//记得把最后一个数清零
+
+    	}
+    	}
+    	return e;//返回删除的头节点
+    	
+    }
 	public static void main(String[] args) {
        BinaryHeap a=new BinaryHeap();
-       a.array=new int[]{1,4,3,7,5,8,9,11,9,6,10};//给数组赋值
-       a.size=11;
+       a.array=new int[]{1,4,8,7,5,10,9,11,9,6};//给数组赋值
+       a.size=10;
       /* System.out.println(a.array[a.parent(3)]);
        System.out.println(a.array[a.leftChild(3)]);
        System.out.println(a.array[a.rightChild(3)]);
        System.out.println(a.hasRightChild(5));
        System.out.println(a.hasParent(0));*/
-       a.add(2);
+       //a.add(2);
        //System.out.println(a.array[1]);
-      a.print();
+       //System.out.println(a.pop());
+       //System.out.println(a.pop());
+//a.pop();
+a.add(2);
+a.print();
        }       
 	}
