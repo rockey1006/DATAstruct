@@ -14,13 +14,26 @@ public WeightedQuickUnion(int N) {
 	}
 	}
 public int find(int p) {//找到父节点
-	while(id[p]!=p) {
-		p=id[p];
+	/*while(id[p]!=p) {//数据量不大时使用非优化的
+		id[p]=id[id[p]];//优化1，压缩路径为half
+		p=id[p];*/
+	int root,k,j;//优化2，压缩路径为扁平形状
+	root=p;
+	while(id[root]!=root) {
+		root=id[root];//先找到根节点，用root记下，更新root
 	}
-	return p;
+	
+	k=p;
+	while(id[k]!=root) {
+		j=id[k];//记下当前k的父节点的值
+		id[k]=root;
+		k=j;//更新k
+		
+	}
+	return root;
 }
 public void union(int p,int q) {
-	int pID=find(p);
+	int pID=find(p);//用pID记录p的根节点
 	int qID=find(q);
 	if(pID==qID) {
 		return;//相当于break
