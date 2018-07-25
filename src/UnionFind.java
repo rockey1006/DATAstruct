@@ -4,7 +4,7 @@ public class UnionFind {//根据一个索引的数组实现
 	public int count;//类别
 	public UnionFind(int N) {//构造方法
 		this.count=N;
-		this.id=new int[N];
+		this.id=new int[N];//创建一个数组
 		for(int i=0;i<N;i++) {
 			this.id[i]=i;//给数组赋值
 		}
