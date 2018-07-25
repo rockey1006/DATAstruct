@@ -17,19 +17,19 @@ public int find(int p) {//找到父节点
 	/*while(id[p]!=p) {//数据量不大时使用非优化的
 		id[p]=id[id[p]];//优化1，压缩路径为half
 		p=id[p];*/
-	int root,k,j;//优化2，压缩路径为扁平形状,
-	//有3个变量因为：1 需要定义变量记住当前结点的值。2.记住ROOT的值
-	//3.j记住指向根节点的值。不能用p记住因为p需要用在两个循环，会出错。
+	int root,j;//优化2，压缩路径为扁平形状,
+	//有3个变量因为：1 需要定义变量记住当前结点P的值2.记住ROOT的值
+	//3.j记下当前结点的父节点的值
 	root=p;
 	while(id[root]!=root) {//第一个循环找到root
 		root=id[root];//先找到根节点，用root记下，更新root
 	}
 	
-	k=p;
-	while(k!=root) {//第二个循环每一个点都指向根节点
-		j=id[k];//j记下当前k的父节点的值
-		id[k]=root;
-		k=j;//更新k
+	
+	while(p!=root) {//第二个循环每一个点都指向根节点
+		j=id[p];//j记下当前结点的父节点的值
+		id[p]=root;
+		p=j;//更新k
 		
 	}
 	return root;
