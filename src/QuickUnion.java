@@ -18,8 +18,8 @@ public int find(int p) {
 public void union(int p,int q) {
 	int pID=find(p);
 	int qID=find(q);
-	if(pID!=qID) {
-		id[pID]=qID;
+	if(pID!=qID) {//如果彼此的根节点不相同
+		id[pID]=qID;//其中一个根节点的父节点就是另一个根节点
 		count--;
 		
 	}
