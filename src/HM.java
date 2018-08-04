@@ -3,7 +3,7 @@ import java.util.*;
 import java.util.HashMap;
 /*Map集合框架的功能
  * 1.增加
- * 返回值V- put(K key,V value)
+ * 返回值V- put(K key,V value),如果添加相同的键，后添加的值会覆盖原来的值，并返回原来的值
  * 2.删除
  * 返回值V-remove（object K);
  * void-clear();
@@ -15,8 +15,8 @@ import java.util.HashMap;
  * 返回值V-get(object key);//获取某个键的值，也可以判断某个键是否存在
  * size();//获取长度
  * 返回值 Collection<V>-values();//获取所有的值
- * entrySet();
- * keySet();
+ * 返回值Set<Map.Entry<K,V>>-entrySet();返回此映射中包含的映射关系的 Set 视图。
+ * 返回值 Set<K>-keySet();//返回此映射中包含的键的 Set 视图
  * 
  */
 public class HM {
