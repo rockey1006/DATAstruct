@@ -28,9 +28,11 @@ public class HM {
 		map.put("03", "c");
 		map.put("04", "d");
 		map.put(null, "e");//HashMap里面null是可以作为key存在的
+		map.put("01", "f");
 System.out.println(map.containsKey("01"));
 System.out.println(map.containsValue("b"));
 System.out.println(map.isEmpty());
+System.out.println(map.put("01","g"));//返回f；拉链结构体现
 
 System.out.println(map);
 //map.remove("03");
@@ -38,10 +40,10 @@ System.out.println(map);
 System.out.println(map.size());
 
 Collection<String> coll=map.values();//返回值是Collection<>
-System.out.println(coll);
+//System.out.println(coll);
 System.out.println(map.values());
 
-System.out.println(map.get(null));//null不用加引号，但是不常用
+//System.out.println(map.get(null));//null不用加引号，但是不常用
 
 
 
