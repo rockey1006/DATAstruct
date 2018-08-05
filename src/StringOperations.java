@@ -35,7 +35,20 @@ import java.lang.*;
  * 使用指定的字面值替换序列替换此字符串所有匹配字面值目标序列的子字符串。
  * 5.切割
  * String[]-split(String regex)//根据给定正则表达式的匹配拆分此字符串。
- 
+ 6.子串//获取字符串中的一部分
+ String-substring(begin);//从指定位置开始到结尾,如果指定位置不存在，会出现异常。
+  String-substring(begin,end);//包含头，不包含尾.
+  7.转换，去除空格，比较
+  7.1将字符串转成大写/小写
+  String-toUpperCase();
+  String-toLowerCase();
+  7.2去除字符串两端的空格
+  String-trim();
+  7.3比较两个字符串Unicode
+   int-compareTo(String anotherString)//如果参数字符串等于此字符串，则返回值 0；
+   如果此字符串按字典顺序小于字符串参数，则返回一个小于 0 的值；
+   如果此字符串按字典顺序大于字符串参数，则返回一个大于 0 的值。
+
 */
 public class StringOperations {
 ////
