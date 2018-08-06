@@ -6,9 +6,10 @@ import java.lang.*;
  * 1.3.1 int indexOf(int ch);//获取字符在字符串中第一次出现的位置.
  * 之所以参数类型是int 是因为强制类型转换字符为Unicode
  * 1.3.2 int indexOf(int ch,int fromindex)//从fromindex指定位置开始，获取字符在字符串中的位置
- * 1.3.3 int indexOf(String str);//获取子字符串在字符串中第一次出现的位置.
+ * 1.3.3 int indexOf(String str);//获取子字符串第一个字母在字符串中第一次出现的位置.
  * 
- * 1.3.4 int indexOf(String str,int fromindex)//从fromindex指定位置开始，获取子字符串在字符串中的位置
+ * 1.3.4 int indexOf(String str,int fromindex)//从fromindex指定位置开始，
+ * 获取子字符串在字符串中的位置
  * 2.判断
  * 2.1字符串是否以指定内容开头//boolean startsWith(str);
  * 2.2字符串是否以指定内容结尾//boolean endsWith(str);
@@ -26,7 +27,6 @@ import java.lang.*;
  *static String copyValueOf(char[],offset,count);
  *static String valueOf(char[]);//和copyValueOf的区别是valueOf还可以把基本数据类型转换成字符串
  * *static String valueOf(char[],offset,count);
-
  * 3.2将字符串转换成字符数组//**重点
  * char[]-toCharArray();
  * 4.替换
@@ -36,8 +36,8 @@ import java.lang.*;
  * 5.切割
  * String[]-split(String regex)//根据给定正则表达式的匹配拆分此字符串。
  6.子串//获取字符串中的一部分
- String-substring(begin);//从指定位置开始到结尾,如果指定位置不存在，会出现异常。
-  String-substring(begin,end);//包含头，不包含尾.
+ String-substring(beginindex);//从指定位置开始到结尾,如果指定位置不存在，会出现异常。
+  String-substring(beginindex,endindex);//包含头，不包含尾.
   7.转换，去除空格，比较
   7.1将字符串转成大写/小写
   String-toUpperCase();
@@ -52,8 +52,64 @@ import java.lang.*;
 */
 public class StringOperations {
 ////
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		char[] s= {'a','b','c','d','e','a'};
+       String a= new String (s);
+       String b="Hello Java,Hello World,Hello Java";
+       //System.out.println(a.length());
+       //System.out.println(a.charAt(0));
+       //System.out.println(a.indexOf('a'));//字符单引号
+       //System.out.println(a.indexOf('a',1));
+       //System.out.println(b.indexOf("Java"));//字符串双引号
+       //System.out.println(b.indexOf("Hello",1));
+       
+       /*System.out.println(b.startsWith("Hello"));
+       System.out.println(b.endsWith("Hello"));
+       System.out.println(b.isEmpty());
+       System.out.println(b.contains("Hello"));
+       System.out.println(a.equals("abcde"));*/
+       
+       /*String c=new String(s,1,3);
+       System.out.println(c);
+       String d=String.copyValueOf(s);
+       System.out.println(d);
+       String e=String.copyValueOf(s,1,3);
+       System.out.println(e);*/
+       //System.out.println(b.toCharArray());
+
+       //System.out.println(b.replace("l", "k"));
+       //System.out.println(b.replace("llo", "klo"));
+       String[]f=b.split(",");
+       for(int i=0;i<f.length;i++) {
+       System.out.println(f[i]);
+       }
+      /* 6.子串//获取字符串中的一部分
+       String-substring(begin);//从指定位置开始到结尾,如果指定位置不存在，会出现异常。
+        String-substring(begin,end);//包含头，不包含尾.
+        7.转换，去除空格，比较
+        7.1将字符串转成大写/小写
+        String-toUpperCase();
+        String-toLowerCase();
+        7.2去除字符串两端的空格
+        String-trim();
+        7.3比较两个字符串Unicode
+         int-compareTo(String anotherString)//如果参数字符串等于此字符串，则返回值 0；
+         如果此字符串按字典顺序小于字符串参数，则返回一个小于 0 的值；
+         如果此字符串按字典顺序大于字符串参数，则返回一个大于 0 的值。*/
+       System.out.println(b.substring(3));
+       System.out.println(b.substring(3, 11));
+       System.out.println(b.toUpperCase());
+       System.out.println(a.compareTo(b));
+
+
+
+
+
+
+
+
+       
 
 	}
 
