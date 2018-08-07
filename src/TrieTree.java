@@ -34,14 +34,39 @@ public class TrieTree {
     	}
 
     	
-    	
-    	
     }
-    
+    	
+    	
+    public boolean search(Node root,String str) {
+    	String word=str.toLowerCase();//转换为小写
+
+    	char[]ch=word.toCharArray();
+    	for(int i=0;i<ch.length;i++) {
+    		int index=ch[i]-'a';
+    		if(root.child[index]==null) {
+    			return false;
+    		}
+    		root=root.child[index];
+    		}
+    			return true;
+    		
+    	}
+    	
 	public static void main(String[] args) {
 
+            TrieTree a= new TrieTree(); 
             
-  
+            a.insert(a.root,"abc");
+            a.insert(a.root,"def");
+            a.insert(a.root,"abd");
+            System.out.println(a.search(a.root,"df"));
+            System.out.println(a.search(a.root,"def"));
+            System.out.println(a.search(a.root,"DEF"));
+            System.out.println(a.search(a.root,"AbC"));
+
+
+
+
 	}
 
 }
