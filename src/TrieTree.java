@@ -57,10 +57,14 @@ public class TrieTree {//前缀树，树对象里是一个名为root的指针
     			return true;
     		
     	}
+    public boolean startsWith(Node root,String prefix) {
+    	return search(root,prefix);
+    }
+    
     public  HashMap<String,Integer> preTraversal(Node root,String prefixs){
 		HashMap<String, Integer> map=new HashMap<String, Integer>();
 		
-		if(root!=null){
+		if(root!=null){//这个功能太难，暂时不用
 			
 			if(root.isLeaf==true){
 			////当前即为一个单词
@@ -87,11 +91,11 @@ public class TrieTree {//前缀树，树对象里是一个名为root的指针
             a.insert(a.root,"abc");
             a.insert(a.root,"abf");
             a.insert(a.root,"abd");
-            System.out.println(a.search(a.root,"df"));
+            System.out.println(a.search(a.root,"ab"));
             System.out.println(a.search(a.root,"def"));
             System.out.println(a.search(a.root,"DEF"));
             System.out.println(a.search(a.root,"AbC"));
-            System.out.println(a.preTraversal(a.root,"ab"));
+            System.out.println(a.startsWith(a.root,"a"));
 
 
 
