@@ -1,5 +1,7 @@
 import java.lang.*;
-public class TrieTree {
+import java.util.*;
+import java.util.HashMap;
+public class TrieTree {//前缀树，树对象里是一个名为root的指针
 	Node root;//全局变量
 	public class Node{//一个结点字符串，eg,in
 		int prefix;//记录以该结点字符串为前缀的字符串数量
@@ -21,7 +23,7 @@ public class TrieTree {
     	String word=str.toLowerCase();//转换为小写
     	char[] ch=word.toCharArray();//将字符串转换为字符数组储存
     	for(int i=0;i<ch.length;i++) {
-    		int index=ch[i]-'a';//找到要插入的字符的索引，用相对于a字母的值作为索引
+    		int index=ch[i]-'a';//找到要插入的字符的索引，用相对于a字母的位置作为索引
     		if(root.child[index]!=null) {//如果要插入的字符存在
     			root.child[index].prefix++;//该子结点的前缀数加1
     		}
@@ -29,6 +31,10 @@ public class TrieTree {
     			root.child[index]=new Node();//如果不存在就新建一个结点
     			root.child[index].prefix++;
     		}
+    		if(i==ch.length-1){
+				root.child[index].isLeaf=true;
+				root.child[index].dumpli++;
+				}
     		root=root.child[index];//root更新为子结点，继续循环
     	
     	}
@@ -51,18 +57,42 @@ public class TrieTree {
     			return true;
     		
     	}
+    public  HashMap<String,Integer> preTraversal(Node root,String prefixs){
+		HashMap<String, Integer> map=new HashMap<String, Integer>();
+		
+		if(root!=null){
+			
+			if(root.isLeaf==true){
+			////当前即为一个单词
+				map.put(prefixs, root.dumpli);
+			}
+			
+			for(int i=0;i<root.child.length;i++){
+				if(root.child[i]!=null){
+					char ch=(char) (i+'a');
+					////递归调用前序遍历
+					String tempStr=prefixs+ch;
+					map.putAll(preTraversal(root.child[i], tempStr));
+				}
+			}
+		}		
+		
+		return map;
+		}
     	
 	public static void main(String[] args) {
 
             TrieTree a= new TrieTree(); 
             
             a.insert(a.root,"abc");
-            a.insert(a.root,"def");
+            a.insert(a.root,"abf");
             a.insert(a.root,"abd");
             System.out.println(a.search(a.root,"df"));
             System.out.println(a.search(a.root,"def"));
             System.out.println(a.search(a.root,"DEF"));
             System.out.println(a.search(a.root,"AbC"));
+            System.out.println(a.preTraversal(a.root,"ab"));
+
 
 
 
