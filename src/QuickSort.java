@@ -21,7 +21,7 @@ public class QuickSort {
 	        arr[high] = arr[low];           //交换比枢轴小的记录到右端  
 			  }			  
         arr[low] = pivot;
-	    return low;
+	    return low;//
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
