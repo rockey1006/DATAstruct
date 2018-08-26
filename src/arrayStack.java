@@ -15,6 +15,9 @@ public int pop() {
 public int peek() {
 	return stack[top];
 }
+public boolean isEmpty() {
+	return top==-1;
+}
 	public static void main(String[] args) {
 
 	}
