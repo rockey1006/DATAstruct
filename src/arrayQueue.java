@@ -21,7 +21,9 @@ public class arrayQueue {
 		return aq[first++];
 		
 	}
-
+public boolean isEmpty() {
+	return last+1==first||first+SIZE-1==last;//不是last=-1||first=0
+}
 	public static void main(String[] args) {
 		arrayQueue a=new arrayQueue();
 		a.enqueue(1);
@@ -32,6 +34,7 @@ public class arrayQueue {
 		System.out.println(a.dequeue());
 		System.out.println(a.dequeue());
 		System.out.println(a.dequeue());
+		System.out.println(a.isEmpty());
 
 
 	}
